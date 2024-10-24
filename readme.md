@@ -1,29 +1,42 @@
-# Bienvenido al proyecto test rabbitMq
-Este proyecto consiste en lavantar 3 contenedores docker, apuntando dentro de la misma red, para su correcto funcionamiento.
+# Bienvenido al proyecto Test RabbitMQ
 
-# Comando inicial en una terminal
- - 1) docker-compose up --build | -> Comando para descargar la imagen requerida, iniciar los contenedores y la red.
+Este proyecto consiste en levantar 3 contenedores Docker, conectados dentro de la misma red, para su correcto funcionamiento.
 
-# Ingresar al admin de rabbitMQ web
- - 2)  http://localhost:15672/ | -> Ingresa a la url anterior, para hacer el respectivo logueo en el administrador de RabbitMQ.
- - Usuario: guest -> Por defecto.
- - Password: guest -> Por defecto.
- Se vera el Overview y los demas modulos pertinentes del cliente.
+## Comando inicial en una terminal
+1. `docker-compose up --build`  
+   Comando para descargar la imagen requerida, iniciar los contenedores y la red.
 
-# En otra terminal usa los siguientes comandos para ejecutar el consumer.py
- - 3) docker-compose exec consumer sh -> Ingresa dentro del contenedor consumer
- - 4) ls -> para validar los archivos ejecutables dentro del contenedor, entre ellos producer.py y consumer.py
- - 5) python3 consumer.py -> Ejecuta el consumer para la espera de capturar un mensaje de la cola de rabbitMq
- -    Veras algo asi: [*] Esperando mensajes. Presiona CTRL+C para salir.
+## Ingresar al administrador de RabbitMQ web
+2. Ingresa a la siguiente URL:  
+   [http://localhost:15672/](http://localhost:15672/)  
+   Para hacer el respectivo inicio de sesión en el administrador de RabbitMQ.
+   - **Usuario:** guest (Por defecto).
+   - **Contraseña:** guest (Por defecto).  
+   
+   Se verá el panel "Overview" y los demás módulos pertinentes del cliente.
 
-# En otra terminal usa los siguientes comandos para ejecutar el producer.py
- - 6) docker-compose exec consumer sh -> Ingresa dentro del contenedor consumer
- - 7) ls -> para validar los archivos ejecutables dentro del contenedor, entre ellos producer.py y consumer.py
- - 8) python3 producer.py -> Ejecuta el producer para el envio de un mensaje a la cola de rabbitMq.
+## En otra terminal, usa los siguientes comandos para ejecutar `consumer.py`:
+3. `docker-compose exec consumer sh`  
+   Ingresa dentro del contenedor **consumer**.
+4. `ls`  
+   Para validar los archivos ejecutables dentro del contenedor, entre ellos `producer.py` y `consumer.py`.
+5. `python3 consumer.py`  
+   Ejecuta el consumer para esperar la captura de un mensaje de la cola de RabbitMQ.  
+   Verás algo como: `[*] Esperando mensajes. Presiona CTRL+C para salir`.
 
-# Paso para ver el consumo del mensaje
- - 9) Vuelve a la terminal donde ejecutaste el consumer.py, y escribe: python3 consumer.py
- - 10) Vuelve a la terminal donde ejecutaste el producer.py, y escribe: python3 producer.py
+## En otra terminal, usa los siguientes comandos para ejecutar `producer.py`:
+6. `docker-compose exec consumer sh`  
+   Ingresa dentro del contenedor **consumer**.
+7. `ls`  
+   Para validar los archivos ejecutables dentro del contenedor, entre ellos `producer.py` y `consumer.py`.
+8. `python3 producer.py`  
+   Ejecuta el producer para el envío de un mensaje a la cola de RabbitMQ.
 
- ## Ahora vuelve a la terminal del consumer y veras el mensaje impreso en la consola.
- - [x] Recibido b'Hello RabbitMQ from Docker!'
+## Paso para ver el consumo del mensaje:
+9. Vuelve a la terminal donde ejecutaste `consumer.py` y escribe:  
+   `python3 consumer.py`
+10. Vuelve a la terminal donde ejecutaste `producer.py` y escribe:  
+    `python3 producer.py`
+
+## Ahora vuelve a la terminal del consumer y verás el mensaje impreso en la consola.
+- [x] Recibido: `b'Hello RabbitMQ from Docker!'`
